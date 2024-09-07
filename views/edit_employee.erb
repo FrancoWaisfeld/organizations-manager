@@ -1,0 +1,23 @@
+<h1><%== @employee[:full_name]%> - <%== @employee[:job]%></h1>
+
+<a href="/organizations/<%== @employee[:organization_id] %>">Back to Organization</a>
+
+<form method="post" action="/organizations/<%== @employee[:organization_id] %>/employee/<%== @employee[:id] %>/edit">
+  <label for="full_name">New full name:
+    <input type="text" id="full_name" name="full_name"
+    value="<%== params[:full_name] %>" required/>
+  </label>
+
+  <button type="submit">Submit</button>
+</form>
+
+<br/>
+
+<form method="post" action="/organizations/<%== @employee[:organization_id] %>/employee/<%== @employee[:id] %>/edit">
+  <label for="job">New job:
+    <input type="text" id="job" name="job" value="<%== params[:job] %>"
+    required/>
+  </label>
+
+  <button type="submit">Submit</button>
+</form>

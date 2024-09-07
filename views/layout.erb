@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+<head>
+  <title>Organizations</title>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <main>
+    <% if session[:message]%>
+      <p><%= session.delete(:message) %></p>
+    <% end %>
+
+    <%== yield %>
+  </main>
+</body>
+
+</html>

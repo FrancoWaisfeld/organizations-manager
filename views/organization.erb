@@ -1,0 +1,44 @@
+<h1><%== @organization[:name] %></h1>
+
+<a href="/organizations">View All Organizations</a>
+
+<h2>Add a new employee</h2>
+
+<form method="post" action="/organizations/<%== @organization[:id] %>/employee/new">
+  <label for="full_name">Full name:
+    <input type="text" id="full_name" name="full_name" 
+    value="<%== session.delete(:full_name)%>" required/>
+  </label>
+
+  <label for="job">Job:
+    <input type="text" id="job" name="job" value="<%== session.delete(:job)%>"
+    required/>
+  </label>
+
+  <button type="submit">Add</button>
+</form>
+
+<h2>Employees:</h2>
+
+<dl>
+  <% @employees.each do |employee| %>
+    <dt><%== employee[:full_name] %> - <%== employee[:job] %></dt>
+
+    <dd>
+      <a href="/organizations/<%== @organization[:id] %>/employee/<%== employee[:id] %>/edit">
+        Edit Employee
+      </a>
+    </dd>
+
+    <dd>
+      <form method="post" action="/organizations/<%== @organization[:id] %>/employee/<%== employee[:id] %>/delete">
+          <button type="submit">Delete</button>
+      </form>
+    </dd>
+  <% end %>
+</dl>
+
+<p>Pages:</p>
+<% 0.upto(@max_page) do |page| %>
+  <a href="/organizations/<%== @organization[:id] %>?page=<%==page %>"><%==page %></a>
+<% end %>

@@ -1,0 +1,12 @@
+<h1>Edit <%== @organization[:name] %></h1>
+
+<a href="/organizations">View All Organizations</a>
+
+<form method="post" action="/organizations/<%== params[:id] %>/edit">
+  <label for="new_organization_name">New organization name:
+    <input id="new_organization_name" name="new_organization_name" 
+    value="<%== params[:new_organization_name] %>"/>
+
+    <button type="submit">Submit</button>
+  </label>
+</form>

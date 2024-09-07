@@ -1,0 +1,42 @@
+<h1>Organizations</h1>
+
+  <form method="post" action="/organizations/new">
+    <label for="new_organization">New organization name:
+      <input type="text" name="new_organization" id="new_organization"
+      value="<%== session.delete(:new_organization) %>">
+    </label>
+
+    <button type="submit">Create</button>
+  </form>
+
+  <br>
+
+<dl>
+  <% @organizations.each do |org|%>
+    <dt>
+      <h2><%== org[:name] %></h2>
+    </dt>
+
+    <dd>
+      Organization Size: <%== org[:employees_count] %>
+    </dd>
+
+    <dd>
+      <a href="/organizations/<%== org[:id] %>">View All Employees</a>
+    </dd>
+
+    <dd>
+      <a href="/organizations/<%== org[:id] %>/edit">Edit Organization</a>
+    </dd>
+    <dd>
+      <form method="post" action="/organizations/<%== org[:id] %>/delete">
+        <button type="submit">Delete</button>
+      </form>
+    </dd>
+  <% end %>
+</dl>
+
+<p>Pages:</p>
+<% 0.upto(@max_page) do |page| %>
+  <a href="/organizations?page=<%==page %>"><%==page %></a>
+<% end %>
