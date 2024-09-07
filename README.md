@@ -16,6 +16,7 @@ Organizations is a Sinatra application designed for tracking organizations and t
 
 3. **Database Initialization**:
 
+   - Navigate to the 'organizations' database.
    - Execute `psql -d organizations < schema.sql` in your terminal to load the seed data.
 
 4. **Dependencies Installation**:
